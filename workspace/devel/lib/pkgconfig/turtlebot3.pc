@@ -1,0 +1,8 @@
+prefix=/home/lee/workspace/devel
+
+Name: turtlebot3
+Description: Description of turtlebot3
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
