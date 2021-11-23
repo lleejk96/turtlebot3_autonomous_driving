@@ -43,3 +43,24 @@ Remote PC는 Ubuntu 18.04에서 진행하였고 ROS version은 melodic이다.
     $ cd ~/catkin_ws
     $ catkin_make
     $ source ~/catkin_ws/devel/setup.bash
+    
+ #### 4. followbot node 생성
+1. 센서들에 Topic 통신할 publisher와 subscriber 선언   
+   센서들과 topic 통신을 하기 위해서 터틀봇에 topic을 전송할 publisher와 센서값을 받아올 subscriber를 선언하였다.   
+   
+<pre><code>
+ros::Publisher cmd_pub = n.advertise<geometry_msgs::Twist>("cmd_vel", 1);
+image_transport::Subscriber img_sub = it.subscribe("camera/rgb/image_raw",1,img_cb);
+ros::Subscriber scan_sub = n.subscribe<sensor_msgs::LaserScan>("scan",1,scan_cb);
+</code></pre>
+
+2. callback 함수 img_cb로 카메라 데이터 비전 처리
+   - 카메라 영상이 RGB로 가져오기 때문에 차선을 인식하기 위해서는 색상이 필요하다. 트랙에는 white 라인과 yellow 라인으로 구성되어 있다.
+   - 카메라의 모든 영상들을 사용할 필요는 없다. 그래서 비전 처리할 구역을 차선이 보이는 구역에 지정하였다.
+   - 해당 라인이 인식되었다고 보여줄 필요가 있다. 
+   
+3. callback 함수 scan_cb를 통해 라이더 값을 이용하여 장애물 회피
+   - 주행 도중에 장애물이 나타날 수 있다. 이때 라이더 센서를 통해 장애물을 감지할 수 있다. 라이더 센서 데이터 바탕으로 회피 각도를 지정해주었다.
+
+4. while문을 통해 터틀봇에 Twist 값들을 전송하여 주행시작
+   - 반복을 통해서 터틀봇에게 계속 publish를 해주어 주행을 하게 해주어야 한다. 물체가 있을때랑 없을때랑 움직을 다르게 하였다.
