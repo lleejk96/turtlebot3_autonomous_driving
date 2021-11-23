@@ -10,16 +10,16 @@ Remote PC는 Ubuntu 18.04에서 진행하였고 ROS version은 melodic이다.
 
 ***
 ### 1. 하드웨어
-  * 터틀봇3
+       * 터틀봇3
     <img width="400" alt="car" src="https://user-images.githubusercontent.com/66461571/142986953-cfc70b4b-f6e4-4064-a7bc-2a066824f0b8.PNG">   
     
-  * 라즈베리파이
+       * 라즈베리파이
     <img width="200" alt="car" src="https://user-images.githubusercontent.com/66461571/142987144-39c7321a-4d50-462f-950c-89a7f1a2d1e8.jpg">
     
-  * Lidar Sensor
+       * Lidar Sensor
     <img width="200" alt="car" src="https://user-images.githubusercontent.com/66461571/142987284-0fec72c2-d2f4-4898-9997-94dc60782004.PNG">
     
-   * 라즈베리파이 카메라
+       * 라즈베리파이 카메라
     <img width="200" alt="car" src="https://user-images.githubusercontent.com/66461571/142987439-933c34df-a0cc-434b-934c-2167be320d6c.PNG">
     
     
