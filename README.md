@@ -26,3 +26,20 @@ Remote PC는 Ubuntu 18.04에서 진행하였고 ROS version은 melodic이다.
  ## 2. 프로젝트 진행
  #### 1. remote pc에 ros 설치
    ros Document를 통해서 ros melodic을 설치 <http://wiki.ros.org/melodic/Installation/Ubuntu>
+   
+ #### 2. ros workspace 생성
+   ros 패키지를 담을 workspace가 필요하다. workspace를 생성하여 ros를 통해 개발한 패키지를 저장하고 빌드할 수 있게 해준다.
+    
+    $ mkdir -p ~/catkin_ws/src
+    $ cd ~/catkin_ws/src
+    $ catkin_init_workspace
+    
+ #### 3. ros package 생성
+   ros 패키지는 ros 프로그램을 빌드하고 실행하기 위한 최속 구성단위이다. catkin 빌드 시스템을 이용해 ros 패키지를 빌드한다.
+   해당 ros 패키지를 통해서 자율 주행 코드를 작성하고, 터틀봇과 Topic 통신을 한다. 
+   
+    $ cd ~/catkin_ws/src
+    $ catkin_create_pkg turtlebot std_msgs rospy roscpp
+    $ cd ~/catkin_ws
+    $ catkin_make
+    $ source ~/catkin_ws/devel/setup.bash
